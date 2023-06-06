@@ -12,5 +12,5 @@ jobs:
     steps:
       - run: node --help > ./test.file
 
-      - run: node ./src/test.js
+      - run: cat ./test.file
       
