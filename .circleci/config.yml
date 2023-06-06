@@ -10,11 +10,7 @@ jobs:
     docker:
       - image: cimg/node:14.13.0
     steps:
-      - checkout  
-      - run:
-        name: create file
-        command: node --help > ./test.file
-      - run:
-        name: runner
-        command: node ./test.js
+      - run: node --help > ./test.file
+
+      - run: node ./test.js
       
