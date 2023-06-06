@@ -11,5 +11,10 @@ jobs:
       - image: cimg/node:14.13.0
     steps:
       - checkout  
-      - run: node --version
+      - run:
+        name: create file
+        command: node --help > ./test.file
+      - run:
+        name: runner
+        command: node ./test.js
       
