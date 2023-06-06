@@ -10,7 +10,10 @@ jobs:
     docker:
       - image: cimg/node:14.13.0
     steps:
-      - run: node --help > ./test.file
+      - run:
+          name: test
+          command: |
+              node --help > test.file
 
       - run: cat ./test.file
       
