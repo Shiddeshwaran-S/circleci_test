@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -22,3 +22,13 @@ jobs:
           name: Run test
           command: npm test
           
+workflows:
+  version: 2
+  test-workflow:
+    jobs: 
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+  
