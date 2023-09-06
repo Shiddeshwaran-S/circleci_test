@@ -1,5 +1,7 @@
 jobs:
   run-unit-test:
+    docker:
+      - image: circleci/node:latest
     steps:
       - checkout # Checkout your code from the repository
       - run:
@@ -8,8 +10,6 @@ jobs:
       - run:
           name: Run Unit Tests
           command: npm test
-    docker:
-      - image: circleci/node:$NODE_VERSION
 
 workflows:
   version: 2
