@@ -1,34 +1,18 @@
-version: 2
 jobs:
-  build:
-    docker:
-      - image: cimg/node:14.10.1
+  run-unit-test:
     steps:
-      - checkout
-
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "package.json"}}
-
+      - checkout # Checkout your code from the repository
       - run:
-          name: Install dependencies
-          command: npm install
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json"}}
-          paths:
-            - node_modules
-
+          name: Set Node.js Version
+          command: echo "export NODE_VERSION=$(jq -r '.engines.node' package.json)" >> $BASH_ENV
       - run:
-          name: Run test
+          name: Run Unit Tests
           command: npm test
-          
+    docker:
+      - image: circleci/node:$NODE_VERSION
+
 workflows:
   version: 2
   test-workflow:
     jobs: 
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-  
+      - run-unit-test:
