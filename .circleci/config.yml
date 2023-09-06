@@ -8,6 +8,9 @@ jobs:
           name: Set Node.js Version
           command: echo "export NODE_VERSION=$(jq -r '.engines.node' package.json)" >> $BASH_ENV
       - run:
+          name: change Node.js Version
+          command: sudo n $NODE_VERSION
+      - run:
           name: Run Unit Tests
           command: npm test
 
