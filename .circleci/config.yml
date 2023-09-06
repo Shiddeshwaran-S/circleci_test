@@ -1,15 +1,10 @@
 jobs:
   run-unit-test:
+
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:18.0.0 # Please update the node version if changed in package.json
     steps:
       - checkout # Checkout your code from the repository
-      - run:
-          name: Set Node.js Version
-          command: echo "export NODE_VERSION=$(jq -r '.engines.node' package.json)" >> $BASH_ENV
-      - run:
-          name: change Node.js Version
-          command: sudo n $NODE_VERSION
       - run:
           name: Run Unit Tests
           command: npm test
