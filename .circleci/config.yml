@@ -2,7 +2,7 @@ jobs:
   run-unit-test:
 
     docker:
-      - image: circleci/node:18.0.0 # Please update the node version if changed in package.json
+      - image: node:18.0.0 # Please update the node version if changed in package.json
     steps:
       - checkout # Checkout your code from the repository
       - run:
